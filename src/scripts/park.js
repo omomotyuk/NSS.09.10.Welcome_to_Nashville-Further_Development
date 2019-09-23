@@ -1,4 +1,4 @@
-getParkData = function( inputs ) { //get data
+getParkData = function (inputs) { //get data
 
     let query = inputs.query;
 
@@ -16,7 +16,7 @@ getParkData = function( inputs ) { //get data
             .then(parsedentries => {
 
                 //updateParkSearchResults(parsedentries); // send data off
-                buildDomSection( parsedentries, inputs )
+                buildDomSection(parsedentries, inputs)
 
             });
 
@@ -27,7 +27,7 @@ getParkData = function( inputs ) { //get data
             .then(parsedentries => {
 
                 //updateParkSearchResults(parsedentries); // send data off
-                buildDomSection( parsedentries, inputs )
+                buildDomSection(parsedentries, inputs)
 
             });
 
@@ -66,21 +66,21 @@ function updateParkSearchResults(idata) { // works with the park api, so this is
 
     for (let i = 0; i < workinglist.length; i++) { // loop through all results, creating html framework as we go
         parktargetinsert.innerHTML += `
-        
+
         <p class="park_name">
         <span id = "ptarget${i}">${workinglist[i].park_name}</span>
         </p>
-        
-     
-        
-        
+
+
+
+
         `; // this adds unique ids to "ptargets" so that they can be easily targeted using for loops
         //make sure you have your unique letter in fornt of "target"
         // and be sure to get the name of what you want to display into and put it into the span tag.
 
     }
 
-    recordListener( searchInputs[0] );
+    recordListener(searchInputs[0]);
 
 
 }
