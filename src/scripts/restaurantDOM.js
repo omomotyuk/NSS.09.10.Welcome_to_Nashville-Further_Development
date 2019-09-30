@@ -11,6 +11,7 @@ function makePanel(inputs) {
     `
 }
 
+
 //
 function makeParkElement(inputs, workinglist, index) {
     return `
@@ -20,6 +21,7 @@ function makeParkElement(inputs, workinglist, index) {
     `
 }
 
+
 //
 function makeDomElement(inputs, restaurant, index) {
     return `
@@ -28,6 +30,7 @@ function makeDomElement(inputs, restaurant, index) {
         </p>
     `
 }
+
 
 //
 function makeMeetupElement(inputs, events, i) {
@@ -39,6 +42,7 @@ function makeMeetupElement(inputs, events, i) {
         </p>
     `
 }
+
 
 //
 function makeConcertElement(inputs, concert, i) {
@@ -52,12 +56,14 @@ function makeConcertElement(inputs, concert, i) {
     `
 }
 
+
 //
 function createDomPanel(section, inputs) {
-    const restaurantPanel = document.createElement('div');
-    restaurantPanel.innerHTML = makePanel(inputs);
-    section.appendChild(restaurantPanel);
+    const elementPanel = document.createElement('div');
+    elementPanel.innerHTML = makePanel(inputs);
+    section.appendChild(elementPanel);
 }
+
 
 //
 function recordListener(inputs) {
@@ -93,11 +99,12 @@ function recordListener(inputs) {
                 inputs.chosen = i;
             }
 
-            const restaurantName = event.target.getElementsByTagName('SPAN');
-            document.querySelector(`#${inputs.letter}ittinerary`).innerHTML = restaurantName[0].innerHTML;
+            const elementName = event.target.getElementsByTagName('SPAN');
+            document.querySelector(`#${inputs.letter}ittinerary`).innerHTML = elementName[0].innerHTML;
         })
     }
 }
+
 
 //
 function panelListener(results, section, inputs) {
@@ -148,23 +155,23 @@ function panelListener(results, section, inputs) {
                 resultsElement.className += " searchcontainer";
 
                 for (let i = 0; i < results.length; i++) {
-                    const restaurantElement = document.createElement('div');
+                    const itemElement = document.createElement('div');
                     //
                     switch (inputs.letter) {
-                        case 'p': { restaurantElement.innerHTML = makeParkElement(inputs, results[i], i); }
+                        case 'p': { itemElement.innerHTML = makeParkElement(inputs, results[i], i); }
                             break;
-                        case 'r': { restaurantElement.innerHTML = makeDomElement(inputs, results[i], i); }
+                        case 'r': { itemElement.innerHTML = makeDomElement(inputs, results[i], i); }
                             break;
-                        case 'm': { restaurantElement.innerHTML = makeMeetupElement(inputs, results.events[i + 1], i + 1); }
+                        case 'm': { itemElement.innerHTML = makeMeetupElement(inputs, results.events[i + 1], i + 1); }
                             break;
-                        case 'c': { restaurantElement.innerHTML = makeConcertElement(inputs, results[i], i); }
+                        case 'c': { itemElement.innerHTML = makeConcertElement(inputs, results[i], i); }
                             break;
                         default: { }
                     }
-                    //restaurantElement.innerHTML = makeDomElement( inputs, results[i], i );
+                    //itemElement.innerHTML = makeDomElement( inputs, results[i], i );
                     //
 
-                    resultsElement.appendChild(restaurantElement);
+                    resultsElement.appendChild(itemElement);
                 }
 
                 section.appendChild(resultsElement);
@@ -174,6 +181,7 @@ function panelListener(results, section, inputs) {
         }
     })
 }
+
 
 //
 function buildDomSection(restaurantSearshResult, inputs) {
